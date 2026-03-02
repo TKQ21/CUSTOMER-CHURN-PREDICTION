@@ -59,9 +59,12 @@ export const defaultFormData: ChurnFormData = {
   referralSource: "Direct",
 };
 
+export type RiskLevel = "High Risk" | "Medium Risk" | "Low Risk";
+
 export interface PredictionResult {
   prediction: "Yes" | "No";
   probability: number;
+  riskLevel: RiskLevel;
 }
 
 /**
@@ -150,8 +153,16 @@ export function predictChurn(data: ChurnFormData): PredictionResult {
   const prediction = finalScore > 50 ? "Yes" : "No";
   const probability = prediction === "Yes" ? finalScore : 100 - finalScore;
 
+  let riskLevel: RiskLevel;
+  if (finalScore >= 70 || finalScore <= 30) {
+    riskLevel = finalScore > 50 ? "High Risk" : "Low Risk";
+  } else {
+    riskLevel = "Medium Risk";
+  }
+
   return {
     prediction,
     probability: Math.round(probability * 100) / 100,
+    riskLevel,
   };
 }

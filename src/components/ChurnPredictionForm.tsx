@@ -160,32 +160,47 @@ const ChurnPredictionForm = () => {
       {result && (
         <div className="mt-10 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className={`glass-card p-8 text-center ${
-            result.prediction === "Yes" 
+            result.riskLevel === "High Risk" 
               ? "border-destructive/50" 
+              : result.riskLevel === "Medium Risk"
+              ? "border-yellow-500/50"
               : "border-neon-green/50"
           }`}
           style={{
-            boxShadow: result.prediction === "Yes"
+            boxShadow: result.riskLevel === "High Risk"
               ? "0 0 30px hsl(0 85% 55% / 0.3), inset 0 0 20px hsl(0 85% 55% / 0.1)"
+              : result.riskLevel === "Medium Risk"
+              ? "0 0 30px hsl(45 100% 50% / 0.3), inset 0 0 20px hsl(45 100% 50% / 0.1)"
               : "0 0 30px hsl(150 100% 50% / 0.3), inset 0 0 20px hsl(150 100% 50% / 0.1)"
           }}>
             <div className="flex justify-center mb-4">
-              {result.prediction === "Yes" ? (
+              {result.riskLevel === "High Risk" ? (
                 <ShieldAlert className="w-16 h-16 text-destructive" />
+              ) : result.riskLevel === "Medium Risk" ? (
+                <BarChart3 className="w-16 h-16 text-yellow-400" />
               ) : (
                 <ShieldCheck className="w-16 h-16 text-neon-green" />
               )}
             </div>
             <h2 className="text-2xl font-display font-bold mb-2" style={{
-              color: result.prediction === "Yes" ? "hsl(0 85% 55%)" : "hsl(150 100% 50%)",
-              textShadow: result.prediction === "Yes"
-                ? "0 0 20px hsl(0 85% 55% / 0.5)"
-                : "0 0 20px hsl(150 100% 50% / 0.5)"
+              color: result.riskLevel === "High Risk" ? "hsl(0 85% 55%)" 
+                : result.riskLevel === "Medium Risk" ? "hsl(45 100% 50%)" 
+                : "hsl(150 100% 50%)",
+              textShadow: `0 0 20px ${
+                result.riskLevel === "High Risk" ? "hsl(0 85% 55% / 0.5)" 
+                : result.riskLevel === "Medium Risk" ? "hsl(45 100% 50% / 0.5)" 
+                : "hsl(150 100% 50% / 0.5)"
+              }`
             }}>
-              {result.prediction === "Yes" ? "⚠ High Churn Risk" : "✅ Customer Likely to Stay"}
+              {result.riskLevel === "High Risk" ? "⚠ High Churn Risk" 
+                : result.riskLevel === "Medium Risk" ? "⚡ Medium Risk – Monitor Closely"
+                : "✅ Customer Likely to Stay"}
             </h2>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-2">
               Prediction: <span className="font-bold text-foreground">{result.prediction === "Yes" ? "Will Churn" : "Will Stay"}</span>
+            </p>
+            <p className="text-muted-foreground mb-4">
+              Risk Level: <span className="font-bold text-foreground">{result.riskLevel}</span>
             </p>
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card">
               <span className="text-sm text-muted-foreground">Confidence:</span>
