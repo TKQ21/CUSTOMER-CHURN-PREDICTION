@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+AI-Powered Customer Churn Predictor
 
-## Project info
+Description:
+This web application predicts whether a customer is likely to churn (leave) or stay using AI/ML. It helps companies identify high-risk customers and take proactive measures such as discounts or offers to retain them. The app provides prediction confidence and a risk level (High / Medium / Low) for better decision-making.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+project: https://ai-customer-churn-prediction.lovable.app
 
-## How can I edit this code?
+Features
 
-There are several ways of editing your application.
+Predict Will Stay / Will Churn / Medium Risk for each customer
 
-**Use Lovable**
+Shows Confidence % along with Risk Level
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Handles demographic, subscription, usage, and payment features
 
-Changes made via Lovable will be committed automatically to this repo.
+Frontend: React + Tailwind + Neon UI + Animated Stars
 
-**Use your preferred IDE**
+Backend: Python FastAPI + Random Forest / XGBoost
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Modular and ready for synthetic or real datasets
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Responsive and user-friendly interface
 
-Follow these steps:
+Input Fields
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Demographics: Gender, Senior Citizen, Partner, Dependents, Age
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Subscription Info: Tenure, Contract Type, Payment Method, Paperless Billing, Multiple Services, Streaming Services Used
 
-# Step 3: Install the necessary dependencies.
-npm i
+Usage / Interaction: Monthly Charges, Total Charges, Complaints, Last Activity
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Services / Products: Internet Service Type, Add-on Services, Plan Tier, Device Usage
 
-**Edit a file directly in GitHub**
+Behavioral / Payment: Late Payments, Auto-Pay Enabled, Promotions Used, Referral Source
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+How It Works
 
-**Use GitHub Codespaces**
+Fill in the customer details in the form
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Click Predict Churn
 
-## What technologies are used for this project?
+App returns:
 
-This project is built with:
+Prediction: Will Stay / Will Churn
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Confidence: 0–100%
 
-## How can I deploy this project?
+Risk Level: Low / Medium / High
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Companies can use this risk info to retain customers via offers or personalized communication
 
-## Can I connect a custom domain to my Lovable project?
+Tech Stack
 
-Yes, you can!
+Frontend: React, Tailwind CSS, Neon theme, Animated stars
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Backend: Python, FastAPI, Joblib for ML model
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+ML Model: Random Forest Classifier or XGBoost
+
+Dataset: Synthetic or real churn data
+
+Usage
+
+Clone the repository
+
+Install dependencies for frontend and backend
+
+Run FastAPI backend
+
+Run React frontend
+
+Fill the form and test predictions
